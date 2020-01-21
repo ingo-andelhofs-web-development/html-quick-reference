@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reference | Ingo Andelhofs</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!-- ANGULAR JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <!-- MOBILE DEVICES -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FAVICONS -->    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favs/apple-touch-icon.png?v2=5A58Q6aang">
+    <link rel="icon" type="image/png" href="/favs/favicon-32x32.png?v2=5A58Q6aang" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favs/android-chrome-192x192.png?v2=5A58Q6aang" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favs/favicon-16x16.png?v2=5A58Q6aang" sizes="16x16">
+    <link rel="manifest" href="/favs/manifest.json?v2=5A58Q6aang">
+    <link rel="mask-icon" href="/favs/safari-pinned-tab.svg?v2=5A58Q6aang" color="#3e3e3e">
+    <link rel="shortcut icon" href="/favs/favicon.ico?v2=5A58Q6aang">
+    <meta name="apple-mobile-web-app-title" content="Reference">
+    <meta name="application-name" content="Reference">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-TileImage" content="/favs/mstile-144x144.png?v2=5A58Q6aang">
+    <meta name="msapplication-config" content="/favs/browserconfig.xml?v2=5A58Q6aang">
+    <meta name="theme-color" content="#3e3e3e">
+</head>
+<body ng-app="coderef">
+<div class="main" ng-controller="CodeRefs">
+   
+    <form class="search" action="">
+        <input type="search" placeholder="Zoek hier ..." ng-model="searchRef">
+        <div id="space"></div>
+    </form><div style="height: 65px;"></div>
+
+    <article ng-repeat="ref in coderefs | filter:searchRef">
+        <h3>{{ ref.name }} <span class="version">{{ ref.version }}</span></h3>
+        <p>{{ ref.content }}</p>
+        
+        <div ng-show="{{ref.attributes !== undefined}}" class="attr">
+            <br><p><b>Attributes:</b></p>
+            <ul>
+                <li ng-repeat="attributes in ref.attributes">{{ attributes[0] }} - <i>{{ attributes[1] }}</i></li>
+            </ul>
+        </div>
+    </article>
+    
+</div>    
+<!-- appscript --><script src="js/app.js"></script>
+</body>
+</html>
